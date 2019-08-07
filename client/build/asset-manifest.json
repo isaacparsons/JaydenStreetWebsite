@@ -1,0 +1,24 @@
+{
+  "files": {
+    "main.css": "/static/css/main.c6a0dc59.chunk.css",
+    "main.js": "/static/js/main.bd956ed9.chunk.js",
+    "main.js.map": "/static/js/main.bd956ed9.chunk.js.map",
+    "runtime~main.js": "/static/js/runtime~main.a8a9905a.js",
+    "runtime~main.js.map": "/static/js/runtime~main.a8a9905a.js.map",
+    "static/js/2.3d67424f.chunk.js": "/static/js/2.3d67424f.chunk.js",
+    "static/js/2.3d67424f.chunk.js.map": "/static/js/2.3d67424f.chunk.js.map",
+    "index.html": "/index.html",
+    "precache-manifest.8006de827a58ee5de8a395dece392b78.js": "/precache-manifest.8006de827a58ee5de8a395dece392b78.js",
+    "service-worker.js": "/service-worker.js",
+    "static/css/main.c6a0dc59.chunk.css.map": "/static/css/main.c6a0dc59.chunk.css.map",
+    "static/media/about.jpg": "/static/media/about.4e1ef5ae.jpg",
+    "static/media/cover.jpg": "/static/media/cover.e23c26fa.jpg",
+    "static/media/instagram.svg": "/static/media/instagram.6bc5de27.svg",
+    "static/media/itunes.svg": "/static/media/itunes.5f2adadf.svg",
+    "static/media/sample-merch-item.jpg": "/static/media/sample-merch-item.7b695817.jpg",
+    "static/media/soundcloud.svg": "/static/media/soundcloud.72bdbbc2.svg",
+    "static/media/spotify.svg": "/static/media/spotify.d62cba31.svg",
+    "static/media/twitter.svg": "/static/media/twitter.f05be4ce.svg",
+    "static/media/youtube.svg": "/static/media/youtube.87205ef0.svg"
+  }
+}
