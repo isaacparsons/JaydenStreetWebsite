@@ -1,14 +1,17 @@
 import React from 'react';
 import { NavLink, Link } from "react-router-dom";
 import { Dropdown, Divider, Icon } from 'react-materialize';
+import Logo from '../logo.svg'
 
 const activeTabColor = '#650200'
 
 const Header = () => (
     <div class="navbar-fixed">
         <nav>
-            <div style = {{paddingLeft: 15}}class="nav-wrapper grey darken-2">
-                <NavLink class="brand-logo" to ="/">Skreet2x</NavLink>
+            <div style = {{paddingLeft: 15}} class="nav-wrapper grey darken-2">
+                <Link class="brand-logo valign-wrapper" to ="/">
+                    <img style = {{height: 50}} src = {Logo}/>
+                </Link>
                 <MobileNavBar/>
                 <DesktopNavBar/>
             </div>
