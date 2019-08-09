@@ -7,18 +7,36 @@ export default class YoutubeFooter extends Component {
 
     state = {
         playing : false,
-        progress : 0.01,
-        volume : 0.5
+        progress : 0,
+        volume : 0.5,
+        screenWidth : null
+
+    }
+
+    onResize = (e) => {
+        this.setState({screenWidth: e.target.innerWidth})
+    }
+
+    componentDidUpdate(prevProps){
+        if (prevProps.url != this.props.url){
+            this.setState({...this.state, playing: true, progress: 0})
+        }
     }
 
     togglePlaying = () => {
         this.setState({playing: !this.state.playing})
     }
 
-    progressBarDragged = (x) => {
-        var progress = (x - 300) / 500
-        this.setState({progress})
-        this.player.seekTo(progress, 'fraction')
+    progressBarDragged = (e) => {
+        var newProgress = this.state.progress + e
+
+        if(newProgress > 1){
+            newProgress = 1
+        } else if(newProgress < 0){
+            newProgress = 0
+        }
+        this.setState({progress: newProgress})
+        this.player.seekTo(newProgress, 'fraction')
 
     }
 
@@ -30,8 +48,15 @@ export default class YoutubeFooter extends Component {
         this.setState({songDuration: e})
     }
 
-    updateVolume = () => {
+    updateVolume = (e) => {
+        var newVolume = this.state.volume + e
 
+        if(newVolume > 1){
+            newVolume = 1
+        } else if(newVolume < 0){
+            newVolume = 0
+        }
+        this.setState({volume: newVolume})
     }
 
 
@@ -39,13 +64,23 @@ export default class YoutubeFooter extends Component {
         this.player = player
     }
 
-    render() {
+    desktopLayout = () => {
         var {title, author, url} = this.props
         var {progress, playing, volume} = this.state
         var playPause = playing ? 'pause' : 'play_arrow'
+
+        var height = 150
+        var playerWidth = 250
+        var detailsTextWidth = 140
+        var cursorHeightSong = 30
+        var cursorHeightVolume = 20
+        var currentWidth = this.state.screenWidth || window.innerWidth
+        var progressBarContainerWidth = currentWidth - playerWidth - detailsTextWidth
+        var volumeContainerWidth = progressBarContainerWidth * 0.4
+
         return (
             <div style = {{
-                height: 150, 
+                height: height, 
                 width: '100%', 
                 backgroundColor: '#b5b5b5', 
                 position: 'fixed', 
@@ -53,42 +88,138 @@ export default class YoutubeFooter extends Component {
                 display: 'flex',
                 flexDirection: 'row'}}>
 
-                <ReactPlayer 
-                    ref={this.ref}
-                    url={url}
-                    width = {250}
-                    height = {150}
-                    playing = {playing}
-                    volume = {volume}
-                    onDuration = {this.updateSongDuration}
-                    onProgress = {this.updateSongProgress}/>
+                <div style = {{width: playerWidth, height: height}}>
+                    <ReactPlayer 
+                        ref={this.ref}
+                        url={url}
+                        width = {playerWidth}
+                        height = {height}
+                        playing = {playing}
+                        volume = {volume}
+                        onDuration = {this.updateSongDuration}
+                        onProgress = {this.updateSongProgress}/>
+                </div>
+                    
 
-                <div style = {{padding: 20}}>
+                <div style = {{padding: 20, width: detailsTextWidth}}>
                     <h5>{title}</h5>
                     <h6>{author}</h6>
                 </div>
 
-                <div style = {{display: 'flex', flexDirection: 'column', alignItems: 'center',position: 'relative', top: -7.6, width: 500}}>   
+                <div style = {{
+                    display: 'flex', 
+                    flex: 1,
+                    flexDirection: 'column',
+                    }}>   
+
                     <ProgressBar 
-                        width = {500} 
-                        height = {30} 
+                        cursorHeight = {cursorHeightSong}
+                        width = {progressBarContainerWidth}
                         progress = {progress}
                         completedBarColor = "#5e5e5e"
                         notCompletedBarColor = "#8f8f8f"
                         cursorColor = "#fff"
                         render = {(x) => this.progressBarDragged(x)}/>
+
                     <div style = {{
                         display: 'flex', 
+                        flex: 1,
+                        width: '100%',
                         flexDirection: 'row', 
                         justifyContent: 'space-between', 
-                        alignItems: 'center', 
-                        width: '100%'}}>
+                        alignItems: 'center'}}>
+
+                        <i onClick = {this.togglePlaying} style = {{fontSize: 100}} class="material-icons">{playPause}</i>
+
+                        <div style = {{width: '30%'}}>
+                            <ProgressBar 
+                                barHeight = {10}
+                                cursorHeight = {cursorHeightVolume}
+                                width = {volumeContainerWidth}
+                                progress = {volume}
+                                completedBarColor = "#5e5e5e"
+                                notCompletedBarColor = "#8f8f8f"
+                                cursorColor = "#fff"
+                                render = {(x) => this.updateVolume(x)}/>
+                        </div>
+                    </div>
+                </div>
+                
+            </div>
+        )
+    }
+
+    mobileLayout = () => {
+        var {title, author, url} = this.props
+        var {progress, playing, volume} = this.state
+        var playPause = playing ? 'pause' : 'play_arrow'
+
+        var playerWidth = 0
+        var playerHeight = 0
+
+        var height = 150
+        var detailsTextWidth = 140
+        var cursorHeightSong = 30
+        var cursorHeightVolume = 20
+        var progressBarContainerWidth = window.innerWidth - detailsTextWidth
+        var volumeContainerWidth = progressBarContainerWidth * 0.5
+
+        return (
+            <div style = {{
+                height: height, 
+                width: '100%', 
+                backgroundColor: '#b5b5b5', 
+                position: 'fixed', 
+                bottom: 0,
+                display: 'flex',
+                flexDirection: 'row'}}>
+
+                <div style = {{width: playerWidth, height: height}}>
+                    <ReactPlayer 
+                        ref={this.ref}
+                        url={url}
+                        width = {playerWidth}
+                        height = {height}
+                        playing = {playing}
+                        volume = {volume}
+                        onDuration = {this.updateSongDuration}
+                        onProgress = {this.updateSongProgress}/>
+                </div>
+
+                <div style = {{padding: 20, width: detailsTextWidth}}>
+                    <h5>{title}</h5>
+                    <h6>{author}</h6>
+                </div>
+
+                <div style = {{
+                    display: 'flex', 
+                    flex: 1,
+                    flexDirection: 'column',
+                    }}>   
+
+                    <ProgressBar 
+                        cursorHeight = {cursorHeightSong}
+                        width = {progressBarContainerWidth}
+                        progress = {progress}
+                        completedBarColor = "#5e5e5e"
+                        notCompletedBarColor = "#8f8f8f"
+                        cursorColor = "#fff"
+                        render = {(x) => this.progressBarDragged(x)}/>
+
+                    <div style = {{
+                        display: 'flex', 
+                        flex: 1,
+                        width: progressBarContainerWidth,
+                        flexDirection: 'row', 
+                        justifyContent: 'space-between', 
+                        alignItems: 'center'}}>
 
                         <i onClick = {this.togglePlaying} style = {{fontSize: 100}} class="material-icons">{playPause}</i>
 
                         <ProgressBar 
-                            width = {100} 
-                            height = {20} 
+                            barHeight = {10}
+                            cursorHeight = {cursorHeightVolume}
+                            width = {volumeContainerWidth}
                             progress = {volume}
                             completedBarColor = "#5e5e5e"
                             notCompletedBarColor = "#8f8f8f"
@@ -99,5 +230,22 @@ export default class YoutubeFooter extends Component {
                 
             </div>
         )
+    }
+
+
+    render() {
+
+        window.addEventListener("resize", this.onResize);
+        var currentWidth = this.state.screenWidth || window.innerWidth
+
+        var {isVisible} = this.props
+
+        if(isVisible){
+            if(currentWidth > 600){
+                return this.desktopLayout()
+            } else {
+                return this.mobileLayout()
+            }
+        } else return null
     }
 }

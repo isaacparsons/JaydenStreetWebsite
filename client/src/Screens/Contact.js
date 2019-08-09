@@ -1,11 +1,9 @@
 import React from 'react';
-import { BrowserRouter as Router, Route, Link } from "react-router-dom";
-import Footer from '../Components/Footer';
 
 
 function Contact() {
   return (
-      <div>
+      <div style = {{minHeight: window.innerHeight - 427}}>
         <div class = "container">
             <div className = "Padding-Main Background-Color-Dark">
             <h2 className = "Font-Size-Heading Font-Color-White">Contact Me</h2>
@@ -42,7 +40,6 @@ function Contact() {
                 </div>
             </div>
         </div>
-        <Footer/>
     </div>
   );
 }

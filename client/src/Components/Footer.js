@@ -19,6 +19,7 @@ export default function Footer() {
                 alignItems: 'center',
                 paddingLeft: '10%',
                 paddingRight: '10%',
+                
             }}
                 
                 class="Background-Color-Maroon"
