@@ -11,7 +11,7 @@ module.exports = (app) => {
 
         mail.setMailOptions({
             from: email,
-            to: "isaac.2962@gmail.com",
+            to: "skreet2x@gmail.com",
             subject: `${senderEmail} - ${subject}`,
             text: `${firstName} ${lastName} ${message}`
         })
