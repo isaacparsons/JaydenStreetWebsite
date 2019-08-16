@@ -5,6 +5,8 @@ const keys = require('../keys')
 module.exports = (app) => {
     app.post('/sendemail', (req, res) => {
         var {email, password} = keys
+        console.log(email)
+        console.log(password)
         var mail = new Mail(email, password)
 
         var {firstName, lastName, senderEmail, subject, message} = req.body
