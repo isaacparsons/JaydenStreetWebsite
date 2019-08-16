@@ -1,34 +1,35 @@
 import React from 'react';
-import { BrowserRouter as Router, Route, Link } from "react-router-dom";
-import Footer from '../Components/Footer';
 import MerchCard from '../Components/MerchCard'
 
 import merchItem from '../sample-merch-item.jpg'
+import whiteHoodieFront from '../merch/hoodie-white-front.jpeg'
+import whiteHoodieBack from '../merch/hoodie-white-back.jpeg'
+import redHoodieFront from '../merch/hoodie-red-front.jpeg'
+import redHoodieBack from '../merch/hoodie-red-back.jpeg'
+import blackHoodieFront from '../merch/hoodie-black-front.jpeg'
+import blackHoodieBack from '../merch/hoodie-black-back.jpeg'
 
 
 function Merch() {
   return (
         <div>
-            <div class="container" style = {{height: 850}}>
-            <h3>Coming Soon!</h3>
-                {/* <h3>Merch</h3>
-                <div style = {{marginTop: 30, marginBottom: 30}}>
-                    <div class="row" style = {{display: 'flex', flexDirection: 'row'}}>
-                        <MerchCard 
-                            imgUrl = {merchItem}
-                            title = "Long Sleeve Shirt"
-                            price = "$32.00"/>
-                        <MerchCard 
-                            imgUrl = {merchItem}
-                            title = "Long Sleeve Shirt"
-                            price = "$32.00"/>
+            <div class="container" style = {{minHeight: 850}}>
+                <h3>Merch</h3>
+                <div style = {{marginTop: 30, marginBottom: 30, display: 'flex', flexWrap: 'wrap'}}>
+                    <MerchCard 
+                        imgUrls = {[whiteHoodieFront, whiteHoodieBack]}
+                        title = "White Hoodie"
+                        price = "$59.99"/>
+                    <MerchCard 
+                        imgUrls = {[redHoodieFront, redHoodieBack]}
+                        title = "Red Hoodie"
+                        price = "$59.99"/>
 
-                        <MerchCard 
-                            imgUrl = {merchItem}
-                            title = "Long Sleeve Shirt"
-                            price = "$32.00"/>          
-                    </div>
-                </div> */}
+                    <MerchCard 
+                        imgUrls = {[blackHoodieFront, blackHoodieBack]}
+                        title = "Black Hoodie"
+                        price = "$59.99"/>          
+                </div>
             </div>
         </div>
   );

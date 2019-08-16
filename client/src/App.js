@@ -7,12 +7,11 @@ import Home from './Screens/Home'
 
 import './App.css';
 
-import Context from './Context/Context'
-
 
 import About from './Screens/About'
 import Merch from './Screens/Merch'
 import Contact from './Screens/Contact'
+import Cart from './Screens/Cart'
 import YoutubeFooter from './Components/YoutubeFooter';
 import Footer from './Components/Footer';
 import YoutubeFooterContext from './Context/YoutubeFooterContext';
@@ -51,6 +50,7 @@ export default class App extends Component {
             <Route path="/about" component={About} />
             <Route path="/merch" component={Merch} />
             <Route path="/contact" component={Contact} />
+            <Route path="/cart" component={Cart} />
           </div>
         </Router>
         <Footer/>
