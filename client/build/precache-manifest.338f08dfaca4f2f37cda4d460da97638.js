@@ -1,23 +1,23 @@
 self.__precacheManifest = (self.__precacheManifest || []).concat([
   {
-    "revision": "42ae592097466b81ee67d3e2aa6f9e7a",
+    "revision": "c23701acbdeb3eb5b7ce292b377f0b1a",
     "url": "/index.html"
   },
   {
-    "revision": "2346d7910ab270f16145",
+    "revision": "c7010f3e7975feae7e18",
     "url": "/static/css/2.39017165.chunk.css"
   },
   {
-    "revision": "16afacacf4b8f0a54716",
+    "revision": "4f193f2954a5844189b3",
     "url": "/static/css/main.44a7ac7b.chunk.css"
   },
   {
-    "revision": "2346d7910ab270f16145",
-    "url": "/static/js/2.f8378cb7.chunk.js"
+    "revision": "c7010f3e7975feae7e18",
+    "url": "/static/js/2.17357a0a.chunk.js"
   },
   {
-    "revision": "16afacacf4b8f0a54716",
-    "url": "/static/js/main.80cd998e.chunk.js"
+    "revision": "4f193f2954a5844189b3",
+    "url": "/static/js/main.2e034ac3.chunk.js"
   },
   {
     "revision": "42ac5946195a7306e2a5",
@@ -38,6 +38,14 @@ self.__precacheManifest = (self.__precacheManifest || []).concat([
   {
     "revision": "be4b2143a6638e19186bdd1a86f3996c",
     "url": "/static/media/hoodie-black-front.be4b2143.jpeg"
+  },
+  {
+    "revision": "4e7acbcacaa99ca8acd96cdc329fa5f4",
+    "url": "/static/media/hoodie-blue-back.4e7acbca.jpeg"
+  },
+  {
+    "revision": "c52a8ccdec1a28be83efffb6749fbb8e",
+    "url": "/static/media/hoodie-blue-front.c52a8ccd.jpeg"
   },
   {
     "revision": "e553573a67bc4ab97eba108782954846",
