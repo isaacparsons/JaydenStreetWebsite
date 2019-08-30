@@ -77,15 +77,7 @@ export default class App extends Component {
         updateYoutubeFooter: this.updateYoutubeFooter
       },
       cart: {
-        items: [{
-          id: 0,
-          currency: "USD",
-          img: "/static/media/hoodie-red-front.797550dc.jpeg",
-          price: 59.99,
-          quantity: 1,
-          size: "M",
-          title: "Red Hoodie"
-      }],
+        items: [],
         addToCart : this.addToCart,
         emptyCart: this.emptyCart,
         changeQuantity: this.changeQuantity
