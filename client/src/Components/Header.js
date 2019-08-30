@@ -32,7 +32,7 @@ export default class Header extends Component {
 
 const MobileNavBar = (props) => {
     return(
-        <div className = "hide-on-med-and-up">
+        <div className = "hide-on-med-and-up right">
             <Dropdown style = {{position: 'relative'}} trigger={<a><Icon>menu</Icon></a>}>
                 <Link to ="/about">About</Link>
                 <Divider/>
