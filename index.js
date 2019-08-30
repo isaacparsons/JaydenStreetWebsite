@@ -13,7 +13,8 @@ app.use(function(req, res, next) {
 
 require('./server/routes/contactMe')(app)
 require('./server/routes/frontend')(app)
+require('./server/logic/Paypal')(app)
 
 
-const PORT = process.env.PORT || 5000
+const PORT = process.env.PORT || 5001
 app.listen(PORT)

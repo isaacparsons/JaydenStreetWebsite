@@ -38,33 +38,11 @@ export default class Home extends Component {
                         <FeaturedTrack 
                             width = {currentWidth}
                             url = "https://www.youtube.com/watch?v=7Auf9rBvNbY"
-                            trackName = "Upbringing"/>
+                            author = {"skreet2x"}
+                            trackName = "Upbringing"
+                            updateYoutubeFooter = {updateYoutubeFooter}/>
                         <div class = "Background-Color-Black" style = {{minHeight: '700px', padding: 20}}>
                             <h3 style = {{color: 'white'}}>Songs</h3>
-                            {/* <ul style = {{padding: 20}}>
-                                <li>
-                                    <Song 
-                                        updateYoutubeFooter = {updateYoutubeFooter}
-                                        title = "Upbringing"
-                                        author = "Skreet2x"
-                                        width = {currentWidth}
-                                        youtubeLink = "https://www.youtube.com/watch?v=7Auf9rBvNbY"
-                                        soundcloudLink = "https://soundcloud.com/skreet2x"
-                                        spotifyLink = "https://open.spotify.com/artist/7onY9SwotyBa1fkkjCT0lY?si=NaAcIMPJQXOOObPWitSc5g"
-                                        itunesLink = "https://music.apple.com/us/artist/skreet/1446391482#see-all/top-songs"/>
-                                </li>
-                                <li>
-                                <Song 
-                                        updateYoutubeFooter = {updateYoutubeFooter}
-                                        title = "Upbringing"
-                                        author = "Skreet2x"
-                                        width = {currentWidth}
-                                        youtubeLink = "https://www.youtube.com/watch?v=7Auf9rBvNbY"
-                                        soundcloudLink = "https://soundcloud.com/skreet2x"
-                                        spotifyLink = "https://open.spotify.com/artist/7onY9SwotyBa1fkkjCT0lY?si=NaAcIMPJQXOOObPWitSc5g"
-                                        itunesLink = "https://music.apple.com/us/artist/skreet/1446391482#see-all/top-songs"/>
-                                </li>
-                            </ul> */}
                             <SongList
                                 updateYoutubeFooter = {updateYoutubeFooter}
                                 width = {currentWidth}/>
@@ -80,33 +58,13 @@ export default class Home extends Component {
                             width = {currentWidth}
                             url = "https://www.youtube.com/watch?v=7Auf9rBvNbY"
                             trackName = "Upbringing"
+                            updateYoutubeFooter = {updateYoutubeFooter}
                         />
-                        <div class = "Background-Color-Black" style = {{height: '700px', padding: 20}}>
+                        <div class = "Background-Color-Black" style = {{minHeight: '700px', padding: 20}}>
                             <h5 style = {{color: 'white'}}>Songs</h5>
-                            <ul style = {{padding: 0}}>
-                                <li>
-                                    <Song 
-                                        width = {currentWidth}
-                                        updateYoutubeFooter = {updateYoutubeFooter}
-                                        title = "Upbringing"
-                                        author = "Skreet2x"
-                                        youtubeLink = "https://www.youtube.com/watch?v=7Auf9rBvNbY"
-                                        soundcloudLink = "https://soundcloud.com/skreet2x"
-                                        spotifyLink = "https://open.spotify.com/artist/7onY9SwotyBa1fkkjCT0lY?si=NaAcIMPJQXOOObPWitSc5g"
-                                        itunesLink = "https://music.apple.com/us/artist/skreet/1446391482#see-all/top-songs"/>
-                                </li>
-                                <li>
-                                <Song 
-                                        width = {currentWidth}
-                                        updateYoutubeFooter = {updateYoutubeFooter}
-                                        title = "Upbringing"
-                                        author = "Skreet2x"
-                                        youtubeLink = "https://www.youtube.com/watch?v=7Auf9rBvNbY"
-                                        soundcloudLink = "https://soundcloud.com/skreet2x"
-                                        spotifyLink = "https://open.spotify.com/artist/7onY9SwotyBa1fkkjCT0lY?si=NaAcIMPJQXOOObPWitSc5g"
-                                        itunesLink = "https://music.apple.com/us/artist/skreet/1446391482#see-all/top-songs"/>
-                                </li>
-                            </ul>
+                            <SongList
+                                updateYoutubeFooter = {updateYoutubeFooter}
+                                width = {currentWidth}/>
                         </div>
                     </div>
                 </div>
@@ -116,7 +74,7 @@ export default class Home extends Component {
 }
 
 const FeaturedTrack = (props) => {
-    var {width, height, url, trackName} = props
+    var {width, height, url, trackName, updateYoutubeFooter, author} = props
     var iconSize = 90
     
     if (width > 600){
@@ -129,7 +87,12 @@ const FeaturedTrack = (props) => {
         return (
             <div style = {{display: 'flex', flexDirection: 'row'}}>
                 <div style = {{width: imgWidth, height: imgHeight}}>
-                    <i class="material-icons" style = {{position: 'absolute', top: offsetTop, left: offsetLeft, fontSize: iconSize, color: 'white'}}>play_arrow</i>
+                    <i onClick = {() => updateYoutubeFooter({
+                    url: url,
+                    title: trackName,
+                    author: author,
+                    isVisible: true
+                })} class="material-icons" style = {{position: 'absolute', top: offsetTop, left: offsetLeft, fontSize: iconSize, color: 'white'}}>play_arrow</i>
                     <img style = {{width: imgWidth, height: imgHeight, verticalAlign: 'middle'}} src = {'https://img.youtube.com/vi/7Auf9rBvNbY/0.jpg'} alt="cover photo"/>
                 </div>
                 <div style = {{display: 'flex', flexDirection: 'column', flex: 1}}>
@@ -174,74 +137,69 @@ var songListArr = [
         itunesLink : "https://music.apple.com/us/artist/skreet/1446391482#see-all/top-songs"
     },
     {
-        title : "Pain",
-        author : "Skreet2x",
-        youtubeLink : "https://www.youtube.com/watch?v=R5goCL8yzZo&list=OLAK5uy_mM9EbEPB6w1tWrGeBxWaLiJtuZZ560VsU&index=1"
-    },
-    {
         title : "Upbringing",
         author : "Skreet2x",
-        youtubeLink : "https://www.youtube.com/watch?v=srTt6Fpiy8o&list=OLAK5uy_lLgGBNdCT0-eC5OO0EzBonWWLjCbNwczw"
+        youtubeLink : "https://www.youtube.com/watch?v=srTt6Fpiy8o"
     },
     {
         title : "San Marino",
         author : "Skreet2x",
-        youtubeLink : "https://www.youtube.com/watch?v=Bq21zfNIr1A&list=OLAK5uy_lLgGBNdCT0-eC5OO0EzBonWWLjCbNwczw&index=2"
+        youtubeLink : "https://www.youtube.com/watch?v=Bq21zfNIr1A"
     },
     {
         title : "Nights Like This (feat. Ace TG)",
         author : "Skreet2x",
-        youtubeLink : "https://www.youtube.com/watch?v=9_HB50ROwHE&list=OLAK5uy_lLgGBNdCT0-eC5OO0EzBonWWLjCbNwczw&index=3"
+        youtubeLink : "https://www.youtube.com/watch?v=9_HB50ROwHE"
     },
     {
         title : "Pain to Passion",
         author : "Skreet2x",
-        youtubeLink : "https://www.youtube.com/watch?v=-XdjRFMzlOc&list=OLAK5uy_lLgGBNdCT0-eC5OO0EzBonWWLjCbNwczw&index=4"
+        youtubeLink : "https://www.youtube.com/watch?v=-XdjRFMzlOc"
     },
     {
         title : "In the End",
         author : "Skreet2x",
-        youtubeLink : "https://www.youtube.com/watch?v=_Rt2Pj7s7Pg&list=OLAK5uy_lLgGBNdCT0-eC5OO0EzBonWWLjCbNwczw&index=5"
+        youtubeLink : "https://www.youtube.com/watch?v=_Rt2Pj7s7Pg"
     },
     {
         title : "Insomniac (feat. Gohnrapz)",
         author : "Skreet2x",
-        youtubeLink : "https://www.youtube.com/watch?v=3fFlHbMNy0E&list=OLAK5uy_lLgGBNdCT0-eC5OO0EzBonWWLjCbNwczw&index=6"
+        youtubeLink : "https://www.youtube.com/watch?v=3fFlHbMNy0E"
     },
     {
         title : "Myself",
         author : "Skreet2x",
-        youtubeLink : "https://www.youtube.com/watch?v=bk-_6JiXtSU&list=OLAK5uy_lLgGBNdCT0-eC5OO0EzBonWWLjCbNwczw&index=7"
+        youtubeLink : "https://www.youtube.com/watch?v=bk-_6JiXtSU"
     },
     {
         title : "Gold Roses",
         author : "Skreet2x",
-        youtubeLink : "https://www.youtube.com/watch?v=dFtHxx96vHs&list=OLAK5uy_lLgGBNdCT0-eC5OO0EzBonWWLjCbNwczw&index=8"
+        youtubeLink : "https://www.youtube.com/watch?v=dFtHxx96vHs"
     },
     {
         title : "Dying (feat. Suprr)",
         author : "Skreet2x",
-        youtubeLink : "https://www.youtube.com/watch?v=3fFlHbMNy0E&list=OLAK5uy_lLgGBNdCT0-eC5OO0EzBonWWLjCbNwczw&index=9"
+        youtubeLink : "https://www.youtube.com/watch?v=tGhR2A0jATI"
     },
     {
         title : "Love Letter (feat. Sentient)",
         author : "Skreet2x",
-        youtubeLink : "https://www.youtube.com/watch?v=3fFlHbMNy0E&list=OLAK5uy_lLgGBNdCT0-eC5OO0EzBonWWLjCbNwczw&index=10"
+        youtubeLink : "https://www.youtube.com/watch?v=4PUegzNaKsw"
     },
     {
         title : "On the Road (feat. Latjoorawa)",
         author : "Skreet2x",
-        youtubeLink : "https://www.youtube.com/watch?v=3fFlHbMNy0E&list=OLAK5uy_lLgGBNdCT0-eC5OO0EzBonWWLjCbNwczw&index=11"
+        youtubeLink : "https://www.youtube.com/watch?v=aH9TMI96kvk"
     },
     {
         title : "In This Hoe (feat. Jones)",
         author : "Skreet2x",
-        youtubeLink : "https://www.youtube.com/watch?v=3fFlHbMNy0E&list=OLAK5uy_lLgGBNdCT0-eC5OO0EzBonWWLjCbNwczw&index=12"
+        youtubeLink : "https://www.youtube.com/watch?v=QvoVSDH9qqc"
     },
     {
         title : "Stick Up (feat. 812lex)",
         author : "Skreet2x",
-        youtubeLink : "https://www.youtube.com/watch?v=3fFlHbMNy0E&list=OLAK5uy_lLgGBNdCT0-eC5OO0EzBonWWLjCbNwczw&index=13"
+        youtubeLink : "https://www.youtube.com/watch?v=2eMOrVW0PeM"
     },
 ]
 

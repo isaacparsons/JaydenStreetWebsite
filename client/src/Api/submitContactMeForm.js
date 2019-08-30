@@ -9,7 +9,6 @@ const submitContactMeForm = async (body) => {
         subject: subject, 
         message: message
       })
-      
 }
 
 export default submitContactMeForm

@@ -6,7 +6,7 @@ import ProgressBar from './ProgressBar';
 export default class YoutubeFooter extends Component {
 
     state = {
-        playing : false,
+        playing : true,
         progress : 0,
         volume : 0.5,
         screenWidth : null
@@ -81,12 +81,12 @@ export default class YoutubeFooter extends Component {
         return (
             <div style = {{
                 height: height, 
-                width: '100%', 
                 backgroundColor: '#b5b5b5', 
                 position: 'fixed', 
                 bottom: 0,
                 display: 'flex',
-                flexDirection: 'row'}}>
+                flexDirection: 'row',
+                flex: 1}}>
 
                 <div style = {{width: playerWidth, height: height}}>
                     <ReactPlayer 
@@ -101,7 +101,7 @@ export default class YoutubeFooter extends Component {
                 </div>
                     
 
-                <div style = {{padding: 20, width: detailsTextWidth}}>
+                <div style = {{padding: 20}}>
                     <h5>{title}</h5>
                     <h6>{author}</h6>
                 </div>
@@ -124,14 +124,14 @@ export default class YoutubeFooter extends Component {
                     <div style = {{
                         display: 'flex', 
                         flex: 1,
-                        width: '100%',
                         flexDirection: 'row', 
                         justifyContent: 'space-between', 
-                        alignItems: 'center'}}>
+                        alignItems: 'center',
+                        padding: 10}}>
 
                         <i onClick = {this.togglePlaying} style = {{fontSize: 100}} class="material-icons">{playPause}</i>
 
-                        <div style = {{width: '30%'}}>
+                        <div style = {{display: 'flex', flex: 0.3}}>
                             <ProgressBar 
                                 barHeight = {10}
                                 cursorHeight = {cursorHeightVolume}
@@ -186,7 +186,7 @@ export default class YoutubeFooter extends Component {
                         onProgress = {this.updateSongProgress}/>
                 </div>
 
-                <div style = {{padding: 20, width: detailsTextWidth}}>
+                <div style = {{padding: 20}}>
                     <h5>{title}</h5>
                     <h6>{author}</h6>
                 </div>
@@ -212,19 +212,22 @@ export default class YoutubeFooter extends Component {
                         width: progressBarContainerWidth,
                         flexDirection: 'row', 
                         justifyContent: 'space-between', 
-                        alignItems: 'center'}}>
+                        alignItems: 'center',
+                        padding: 10}}>
 
                         <i onClick = {this.togglePlaying} style = {{fontSize: 100}} class="material-icons">{playPause}</i>
-
-                        <ProgressBar 
-                            barHeight = {10}
-                            cursorHeight = {cursorHeightVolume}
-                            width = {volumeContainerWidth}
-                            progress = {volume}
-                            completedBarColor = "#5e5e5e"
-                            notCompletedBarColor = "#8f8f8f"
-                            cursorColor = "#fff"
-                            render = {(x) => this.updateVolume(x)}/>
+                        
+                        <div style = {{display: 'flex', flex: 0.5}}>
+                            <ProgressBar 
+                                barHeight = {10}
+                                cursorHeight = {cursorHeightVolume}
+                                width = {volumeContainerWidth}
+                                progress = {volume}
+                                completedBarColor = "#5e5e5e"
+                                notCompletedBarColor = "#8f8f8f"
+                                cursorColor = "#fff"
+                                render = {(x) => this.updateVolume(x)}/>
+                        </div>
                     </div>
                 </div>
                 
@@ -241,7 +244,7 @@ export default class YoutubeFooter extends Component {
         var {isVisible} = this.props
 
         if(isVisible){
-            if(currentWidth > 600){
+            if(currentWidth > 700){
                 return this.desktopLayout()
             } else {
                 return this.mobileLayout()

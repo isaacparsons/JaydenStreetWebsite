@@ -3,26 +3,26 @@ import React, { Component } from 'react'
 import { NavLink, Link } from "react-router-dom";
 import { Dropdown, Divider, Icon } from 'react-materialize';
 import Logo from '../logo.svg'
-import cartContext from '../Context/cartContext';
+import CartContext from '../Context/CartContext';
 
 const activeTabColor = '#650200'
 
 
 export default class Header extends Component {
-    static contextType = cartContext;
+    static contextType = CartContext
 
     render() {
-        var isCartEmpty = this.context.isEmpty
-        console.log(isCartEmpty)
+        var cart = this.context
+
         return (
             <div class="navbar-fixed">
                 <nav>
                     <div style = {{paddingLeft: 15}} class="nav-wrapper grey darken-2">
-                        <Link class="brand-logo valign-wrapper" to ="/">
+                        <Link to ="/">
                             <img style = {{height: 50}} src = {Logo}/>
                         </Link>
                         <MobileNavBar/>
-                        <DesktopNavBar/>
+                        <DesktopNavBar itemsInCart = {cart.items.length}/>
                     </div>
                 </nav>
             </div>
@@ -70,7 +70,7 @@ const DesktopNavBar = (props) => {
                             alignItems: 'center', 
                             backgroundColor: 'white'}}>
                             <i style = {{color: 'black'}} class="material-icons left">shopping_cart</i>
-                            <h6 style = {{color: 'black'}}>0</h6>
+                            <h6 style = {{color: 'black'}}>{props.itemsInCart}</h6>
                         </div>
                     </div>
                 </NavLink>

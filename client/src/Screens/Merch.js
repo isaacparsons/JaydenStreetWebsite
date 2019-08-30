@@ -8,6 +8,8 @@ import redHoodieFront from '../merch/hoodie-red-front.jpeg'
 import redHoodieBack from '../merch/hoodie-red-back.jpeg'
 import blackHoodieFront from '../merch/hoodie-black-front.jpeg'
 import blackHoodieBack from '../merch/hoodie-black-back.jpeg'
+import blueHoodieFront from '../merch/hoodie-blue-front.jpeg'
+import blueHoodieBack from '../merch/hoodie-blue-back.jpeg'
 
 
 function Merch() {
@@ -19,16 +21,22 @@ function Merch() {
                     <MerchCard 
                         imgUrls = {[whiteHoodieFront, whiteHoodieBack]}
                         title = "White Hoodie"
-                        price = "$59.99"/>
+                        price = {59.99}/>
+                        
                     <MerchCard 
                         imgUrls = {[redHoodieFront, redHoodieBack]}
                         title = "Red Hoodie"
-                        price = "$59.99"/>
+                        price = {59.99}/>
 
                     <MerchCard 
                         imgUrls = {[blackHoodieFront, blackHoodieBack]}
                         title = "Black Hoodie"
-                        price = "$59.99"/>          
+                        price = {59.99}/>      
+
+                    <MerchCard 
+                        imgUrls = {[blueHoodieFront, blueHoodieBack]}
+                        title = "Blue Hoodie"
+                        price = {59.99}/>       
                 </div>
             </div>
         </div>
