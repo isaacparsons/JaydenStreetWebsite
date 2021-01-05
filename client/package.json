@@ -5,7 +5,7 @@
   "proxy": "http://localhost:5001",
   "dependencies": {
     "address-validator": "^0.2.3",
-    "axios": "^0.19.0",
+    "axios": "^0.21.1",
     "materialize-css": "^1.0.0-rc.2",
     "react": "^16.8.6",
     "react-dom": "^16.8.6",
